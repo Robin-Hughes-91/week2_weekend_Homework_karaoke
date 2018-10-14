@@ -13,16 +13,12 @@ class GuestsTest < MiniTest::Test
     @guests = Guest.new(name, wallet, favourite_song)
   end
 
-  # def test_wallet_total()
-  #   @guests.wallet_total(@guest1)
-  #   assert_equal(30, @guest1.wallet)
-  # end
+  def test_wallet_total()
+    @guests.wallet_total(@guest1)
+    assert_equal(30, @guest1.wallet)
+  end
 
 
-  # def test_wallet_count
-  #   @guests.wallet_count(@guest1)
-  #   assert_equal(60, total())
-  # end
 
 
 

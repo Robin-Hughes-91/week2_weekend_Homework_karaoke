@@ -18,9 +18,9 @@ class RoomTest < MiniTest::Test
     @song1 = Song.new("song1", "pop")
     @song2 = Song.new("song2", "rock")
     @song3 = Song.new("song3", "metal")
-    @room1 = Room.new(3, 39, [], [])
+    @room1 = Room.new(3, 39, [], [], 0)
 
-    @room = Room.new(2, 10, [], [])
+    @room = Room.new(2, 10, [], [], 0)
   end
 
   def test_add_guests()
@@ -58,17 +58,22 @@ class RoomTest < MiniTest::Test
   end
 
 
-   def test_can_pay_fee()
-      @room1.add_guests(@guest1)
-      @room1.add_guests(@guest2)
-      group_wallet = @guest1.wallet + @guest2.wallet
-      fee = @room1.fee
-      sum = group_wallet - fee
-      result = sum >= 0
-      assert_equal(true, result)
-    end
+  def test_can_pay_fee()
+    @room1.add_guests(@guest1)
+    @room1.add_guests(@guest2)
+    group_wallet = @guest1.wallet + @guest2.wallet
+    fee = @room1.fee
+    sum = group_wallet - fee
+    result = sum >= 0
+    assert_equal(true, result)
+  end
 
+  def test_add_fee_to_tab
+    @room1.add_guests(@guest1)
+    @room1.add_guests(@guest2)
+    assert_equal()
 
+  end
 
 
 end
