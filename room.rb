@@ -2,15 +2,15 @@ require('pry')
 
 
 class Room
-  attr_reader :space, :fee, :guests_in_room, :songs
+  attr_reader :space, :fee, :guests_in_room, :songs, :bar_tab
 
 
-  def initialize(space, fee, guests_in_room, songs)
+  def initialize(space, fee, guests_in_room, songs, bar_tab)
     @space = space
     @fee = fee
     @guests_in_room = []
     @songs = []
-    @bar_tab = 0
+    @bar_tab = bar_tab
   end
 
   def add_song(song)
@@ -20,7 +20,6 @@ class Room
   def song_count()
     @songs.length
   end
-
 
   def add_guests(guest)
     @guests_in_room << guest
@@ -34,19 +33,42 @@ class Room
     @guests_in_room.clear()
   end
 
-  # def wallet_count()
-  #   @bar_tab  wallet
-  # end
-  #why dont i need to say @room1 etc
-
   def room_space_check()
     remove_guests unless space >= guest_count
   end
 
-
-  def wallet_count
-    return wallet
+  def wallet_count()
+    total = 0
+    for guest in @guests_in_room
+      total += guest.wallet
+    end
+    return total
   end
+
+  def can_pay_fee()
+    return wallet_count - @fee >= 0
+  end
+
+  def add_fee_to_tab
+    @fee += bar_tab
+  end
+
+  def favourite_song_comes_on()
+    for song in @songs
+      for guest in @guests_in_room
+      if song.include?(guest.favourite_song)
+        return "wooooo"
+      end
+    end
+  end
+end
+
+
+
+
+
+
+
 
 
 

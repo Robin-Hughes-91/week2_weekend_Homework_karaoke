@@ -1,4 +1,4 @@
-class Guests
+class Guest
   attr_reader :name, :wallet, :favourite_song
 
 
@@ -8,22 +8,11 @@ class Guests
     @favourite_song = favourite_song
   end
 
-
-  def wallet_total(guest)
-    guest.wallet()
+  def wallet_total()
+    return @wallet
   end
 
-  # def wallet_count(guest)
-  #   total = 0
-  #   @guest1.wallet += total
-  #   return total
-  # end
 
-  def wallet_count()
-
-  return wallet
-
-end
 
 
 
