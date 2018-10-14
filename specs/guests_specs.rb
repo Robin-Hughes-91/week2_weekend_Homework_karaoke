@@ -4,7 +4,7 @@ require_relative("../guests")
 require_relative("../songs")
 
 
-class GuestsTest < MiniTest::Test
+class GuestTest < MiniTest::Test
 
   def setup # order of these is important
     # @guest1 = Guest.new("Robin", 20, "song1")
