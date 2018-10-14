@@ -74,7 +74,7 @@ class RoomTest < MiniTest::Test
   end
 
   def test_favourite_song_comes_on()
-    @room1.add_song(@song1)
+    @room1.add_song(@song2)
     @room1.add_guests(@guest1)
     @room1.add_guests(@guest2)
     result = @room1.favourite_song_comes_on()

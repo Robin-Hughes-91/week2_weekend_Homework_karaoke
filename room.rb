@@ -53,15 +53,15 @@ class Room
     @fee += bar_tab
   end
 
-  def favourite_song_comes_on()
-    for song in @songs
-      for guest in @guests_in_room
-      if song.include?(guest.favourite_song)
-        return "wooooo"
+  def favourite_song_comes_on
+    for guest in @guests_in_room
+     for song in @songs
+      if song.name == guest.favourite_song
+        return "wooooo!"
+        end
       end
     end
   end
-end
 
 
 
@@ -72,4 +72,4 @@ end
 
 
 
-end
+  end
