@@ -12,13 +12,13 @@ class RoomTest < MiniTest::Test
 
   def setup # order of these is important
 
-    # @guest1 = Guests.new("Robin", 30, "song1")
-    # @guest2 = Guests.new("Michael", 30, "song2")
-    # @guest3 = Guests.new("Jack", 30, "song3")
-    @song1 = Songs.new("song1", "pop")
-    @song2 = Songs.new("song2", "rock")
-    @song3 = Songs.new("song3", "metal")
-    @room1 = Room.new(3, 60, [], [])
+    @guest1 = Guest.new("Robin", 20, "song1")
+    @guest2 = Guest.new("Michael", 20, "song2")
+    @guest3 = Guest.new("Jack", 20, "song3")
+    @song1 = Song.new("song1", "pop")
+    @song2 = Song.new("song2", "rock")
+    @song3 = Song.new("song3", "metal")
+    @room1 = Room.new(3, 39, [], [])
 
     @room = Room.new(2, 10, [], [])
   end
@@ -53,18 +53,20 @@ class RoomTest < MiniTest::Test
 
 
   def test_wallet_count()
-    @room1.add_guests(@guest1)
-    @room1.add_guests(@guest2)
-    @guest1.wallet_count
-    assert_equal(60, @guest1.wallet_count)
+    group = @guest1.wallet + @guest2.wallet
+    assert_equal(40, group)
   end
 
 
-  # def test_can_pay_fee()
-  #   @room1.add_guests(@guest1)
-  #   @room1.add_guests(@guest2)
-  #   assert_equal(60, @room1.can_pay_fee())
-  # end
+   def test_can_pay_fee()
+      @room1.add_guests(@guest1)
+      @room1.add_guests(@guest2)
+      group_wallet = @guest1.wallet + @guest2.wallet
+      fee = @room1.fee
+      sum = group_wallet - fee
+      result = sum >= 0
+      assert_equal(true, result)
+    end
 
 
 
