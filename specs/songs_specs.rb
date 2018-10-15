@@ -11,7 +11,7 @@ class SongTest < MiniTest::Test
     @song2 = Song.new("tune2")
     @song3 = Song.new("song3")
 
-    # @songs = Song.new(name, genre)
+    @songs = Song.new(name, genre)
   end
 
 

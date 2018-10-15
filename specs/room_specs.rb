@@ -21,6 +21,7 @@ class RoomTest < MiniTest::Test
     @room1 = Room.new(3, 40, [], [], 0)
 
     @room = Room.new(2, 10, [], [], 0)
+
   end
 
   def test_add_guests()
@@ -43,7 +44,7 @@ class RoomTest < MiniTest::Test
     assert_equal(0, @room1.guest_count())
   end
 
-  def test_room_space_check()
+  def test_room_too_many_people?()
     @room1.add_guests(@guest1)
     @room1.add_guests(@guest2)
     @room1.add_guests(@guest3)
@@ -69,8 +70,8 @@ class RoomTest < MiniTest::Test
   def test_add_fee_to_tab
     @room1.add_guests(@guest1)
     @room1.add_guests(@guest2)
-    result = @room1.add_fee_to_tab
-    assert_equal(40, result)
+    @room1.add_fee_to_tab
+    assert_equal(40, @room1.bar_tab)
   end
 
   def test_favourite_song_comes_on()
